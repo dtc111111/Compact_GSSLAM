@@ -3,7 +3,7 @@
 <p align="center">
 
   <h1 align="center">Compact 3d Gaussian Splatting for Dense Visual SLAM</h1>
-  <h3 align="center">Arxiv 2024Champion</h3>
+  <h3 align="center">Arxiv 2024</h3>
   <h3 align="center"><a href="https://arxiv.org/abs/2403.11247">Paper</a> </h3>
   <div align="center"></div>
 </p>
