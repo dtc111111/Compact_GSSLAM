@@ -48,8 +48,8 @@ SLAM on Embedded Vision System</h1>
 Our method has been tested on python 3.10, CUDA>=11.6. The simplest way to install all dependences is to use [anaconda](https://www.anaconda.com/) and [pip](https://pypi.org/project/pip/) in the following steps: 
 
 ```bash
-conda create -n CGSSLAM python=3.10
-conda activate CGSSLAM
+conda create -n VGSSLAM python=3.10
+conda activate VGSSLAM
 conda install -c "nvidia/label/cuda-11.6.0" cuda-toolkit
 conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.6 -c pytorch -c conda-forge
 pip install -r requirements.txt
@@ -58,6 +58,6 @@ pip install -r requirements.txt
 <!-- Alternatively, we also provide a conda environment.yml file :
 ```bash
 conda env create -f environment.yml
-conda activate CGSSLAM
+conda activate VGSSLAM
 ``` -->
 ``` -->
