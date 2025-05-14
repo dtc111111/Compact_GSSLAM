@@ -10,7 +10,7 @@ SLAM on Embedded Vision System</h1>
 
 <p align="center">
   <a href="">
-    <img src="./framework.png" alt="Logo" width="100%">
+    <img src="Fig/framework.png" alt="Logo" width="100%">
   </a>
 </p>
 
