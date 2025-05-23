@@ -48,7 +48,7 @@ SLAM on Embedded Vision System</h1>
 Our method is a plug-and-play approach that can be integrated with different GS-SLAM frameworks. We will maintain separate branches for different versions of the method. The current version supports MonoGS and Gaussian-SLAM.
 
 - [x] We have updated the `README.md` and are preparing to open-source our code！  
-- [x] Code for main parts, including `optimizer`, `renderer`, `tracking and mapping modules`, 'Voxelized Scene Representation'
+- [x] Code for main parts, including `optimizer`, `renderer`, `tracking and mapping modules`, `Voxelized Scene Representation`
 - [x] Installation setup
 
 # 🛠️ Setup
