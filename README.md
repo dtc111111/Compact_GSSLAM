@@ -2,35 +2,55 @@
 
 <p align="center">
 
-  <h1 align="center">SplaTAM: Splat, Track & Map 3D Gaussians for Dense RGB-D SLAM</h1>
-  <p align="center">
-    <a href="https://nik-v9.github.io/"><strong>Nikhil Keetha</strong></a>
-    ·
-    <a href="https://jaykarhade.github.io/"><strong>Jay Karhade</strong></a>
-    ·
-    <a href="https://krrish94.github.io/"><strong>Krishna Murthy Jatavallabhula</strong></a>
-    ·
-    <a href="https://gengshan-y.github.io/"><strong>Gengshan Yang</strong></a>
-    ·
-    <a href="https://theairlab.org/team/sebastian/"><strong>Sebastian Scherer</strong></a>
-    <br>
-    <a href="https://www.cs.cmu.edu/~deva/"><strong>Deva Ramanan</strong></a>
-    ·
-    <a href="https://www.vision.rwth-aachen.de/person/216/"><strong>Jonathon Luiten</strong></a>
-  </p>
-  <h3 align="center"><a href="https://arxiv.org/pdf/2312.02126.pdf">Paper</a> | <a href="https://youtu.be/jWLI-OFp3qU">Video</a> | <a href="https://spla-tam.github.io/">Project Page</a></h3>
+  <h1 align="center">Voxelized 3D Gaussian Rrepresentation for Dense Visual
+SLAM on Embedded Vision System</h1>
+  <h3 align="center">IJCV Submission</h3>
   <div align="center"></div>
 </p>
 
 <p align="center">
   <a href="">
-    <img src="./assets/1.gif" alt="Logo" width="100%">
+    <img src="Fig/framework.png" alt="Logo" width="100%">
   </a>
 </p>
 
 <br>
+<!-- TABLE OF CONTENTS -->
+<details open="open" style='padding: 10px; border-radius:5px 30px 30px 5px; border-style: solid; border-width: 1px;'>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#installation">Installation</a>
+    </li>
+    <li>
+      <a href="#demo">Online Demo</a>
+    </li>
+    <li>
+      <a href="#usage">Usage</a>
+    </li>
+    <li>
+      <a href="#downloads">Downloads</a>
+    </li>
+    <li>
+      <a href="#benchmarking">Benchmarking</a>
+    </li>
+    <li>
+      <a href="#acknowledgement">Acknowledgement</a>
+    </li>
+    <li>
+      <a href="#citation">Citation</a>
+    </li>
+  </ol>
+</details>
 
-## Coming Soon: Stay Tuned for Faster, Better and Stronger SplaTAM V2 Update!  
+# Notes
+
+Our method is a plug-and-play approach that can be integrated with different GS-SLAM frameworks. We will maintain separate branches for different versions of the method. The current version supports SplaTAM.
+
+- [x] We have updated the `README.md` and are preparing to open-source our code！  
+- [x] Code for main parts, including `optimizer`, `renderer`, `tracking and mapping modules`, `Learnable Mask`, `Voxelized Residual Quantization`
+- [x] Installation setup
+- [ ] Voxelized Scene Representation
 
 <!-- TABLE OF CONTENTS -->
 <details open="open" style='padding: 10px; border-radius:5px 30px 30px 5px; border-style: solid; border-width: 1px;'>
@@ -66,63 +86,29 @@
 ## Installation
 
 ##### (Recommended)
-SplaTAM has been tested on python 3.10, CUDA>=11.6. The simplest way to install all dependences is to use [anaconda](https://www.anaconda.com/) and [pip](https://pypi.org/project/pip/) in the following steps: 
+VCGS-SLAM has been benchmarked with Python 3.10, Torch 1.12.1 & CUDA=11.6. However, Torch 1.12 is not a hard requirement and the code has also been tested with other versions of Torch and CUDA such as Torch 2.3.0 & CUDA 12.1.
+
+The simplest way to install all dependences is to use [anaconda](https://www.anaconda.com/) and [pip](https://pypi.org/project/pip/) in the following steps: 
 
 ```bash
-conda create -n splatam python=3.10
-conda activate splatam
+conda create -n vcgs-slam python=3.10
+conda activate vcgs-slam
 conda install -c "nvidia/label/cuda-11.6.0" cuda-toolkit
 conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.6 -c pytorch -c conda-forge
 pip install -r requirements.txt
 ```
 
-Alternatively, we also provide a conda environment.yml file :
+<!-- Alternatively, we also provide a conda environment.yml file :
 ```bash
 conda env create -f environment.yml
-conda activate splatam
-```
-
-#### Windows
-
-For installation on Windows using Git bash, please refer to the [instructions shared in Issue#9](https://github.com/spla-tam/SplaTAM/issues/9#issuecomment-1848348403).
-
-#### Docker and Singularity Setup
-
-We also provide a docker image. We recommend using a venv to run the code inside a docker image:
-
-
-```bash
-docker pull nkeetha/splatam:v1
-bash bash_scripts/docker_start.bash
-cd /SplaTAM/
-pip install virtualenv --user
-mkdir venv
-cd venv
-virtualenv --system-site-packages splatam
-source ./splatam/bin/activate
-pip install -r venv_requirements.txt
-```
-
-Setting up a singularity container is similar:
-```bash
-cd </path/to/singularity/folder/>
-singularity pull splatam.sif docker://nkeetha/splatam:v1
-singularity instance start --nv splatam.sif splatam
-singularity run --nv instance://splatam
-cd <path/to/SplaTAM/>
-pip install virtualenv --user
-mkdir venv
-cd venv
-virtualenv --system-site-packages splatam
-source ./splatam/bin/activate
-pip install -r venv_requirements.txt
-```
+conda activate vcgs-slam
+``` -->
 
 ## Demo
 
 ### Online
 
-You can SplaTAM your own environment with an iPhone or LiDAR-equipped Apple device by downloading and using the <a href="https://apps.apple.com/au/app/nerfcapture/id6446518379">NeRFCapture</a> app.
+You can VCGS-SLAM your own environment with an iPhone or LiDAR-equipped Apple device by downloading and using the <a href="https://apps.apple.com/au/app/nerfcapture/id6446518379">NeRFCapture</a> app.
 
 Make sure that your iPhone and PC are connected to the same WiFi network, and then run the following command:
 
@@ -130,17 +116,9 @@ Make sure that your iPhone and PC are connected to the same WiFi network, and th
 bash bash_scripts/online_demo.bash configs/iphone/online_demo.py
 ```
 
-On the app, keep clicking send for successive frames. Once the capturing of frames is done, the app will disconnect from the PC and check out SplaTAM's interactive rendering of the reconstruction on your PC! Here are some cool example results:
-
-<p align="center">
-  <a href="">
-    <img src="./assets/collage.gif" alt="Logo" width="75%">
-  </a>
-</p>
-
 ### Offline
 
-You can also first capture the dataset and then run SplaTAM offline on the dataset with the following command:
+You can also first capture the dataset and then run VCGS-SLAM offline on the dataset with the following command:
 
 ```bash
 bash bash_scripts/nerfcapture.bash configs/iphone/nerfcapture.py
@@ -156,9 +134,9 @@ bash bash_scripts/nerfcapture2dataset.bash configs/iphone/dataset.py
 
 ## Usage
 
-We will use the iPhone dataset as an example to show how to use SplaTAM. The following steps are similar for other datasets.
+We will use the iPhone dataset as an example to show how to use VCGS-SLAM. The following steps are similar for other datasets.
 
-To run SplaTAM, please use the following command:
+To run VCGS-SLAM, please use the following command:
 
 ```bash
 python scripts/splatam.py configs/iphone/splatam.py
@@ -175,6 +153,14 @@ To visualize the SplaTAM reconstruction in an online fashion, please use the fol
 ```bash
 python viz_scripts/online_recon.py configs/iphone/splatam.py
 ```
+
+To export the splats to a .ply file, please use the following command:
+
+```bash
+python scripts/export_ply.py configs/iphone/splatam.py
+```
+
+`PLY` format Splats can be visualized in viewers such as [SuperSplat](https://playcanvas.com/supersplat/editor) & [PolyCam](https://poly.cam/tools/gaussian-splatting).
 
 To run 3D Gaussian Splatting on the SplaTAM reconstruction, please use the following command:
 
@@ -273,7 +259,7 @@ Below, we show some example run commands for one scene from each dataset. After 
 
 ### Replica
 
-To run SplaTAM on the `room0` scene, run the following command:
+To run VCGS-SLAM on the `room0` scene, run the following command:
 
 ```bash
 python scripts/splatam.py configs/replica/splatam.py
@@ -289,7 +275,7 @@ For other scenes, please modify the `configs/replica/splatam.py` file or use `co
 
 ### TUM-RGBD
 
-To run SplaTAM on the `freiburg1_desk` scene, run the following command:
+To run VCGS-SLAM on the `freiburg1_desk` scene, run the following command:
 
 ```bash
 python scripts/splatam.py configs/tum/splatam.py
@@ -299,7 +285,7 @@ For other scenes, please modify the `configs/tum/splatam.py` file or use `config
 
 ### ScanNet
 
-To run SplaTAM on the `scene0000_00` scene, run the following command:
+To run VCGS-SLAM on the `scene0000_00` scene, run the following command:
 
 ```bash
 python scripts/splatam.py configs/scannet/splatam.py
@@ -309,7 +295,7 @@ For other scenes, please modify the `configs/scannet/splatam.py` file or use `co
 
 ### ScanNet++
 
-To run SplaTAM on the `8b5caf3398` scene, run the following command:
+To run VCGS-SLAM on the `8b5caf3398` scene, run the following command:
 
 ```bash
 python scripts/splatam.py configs/scannetpp/splatam.py
@@ -325,7 +311,7 @@ For other scenes, please modify the `configs/scannetpp/splatam.py` file or use `
 
 ### ReplicaV2
 
-To run SplaTAM on the `room0` scene, run the following command:
+To run VCGS-SLAM on the `room0` scene, run the following command:
 
 ```bash
 python scripts/splatam.py configs/replica_v2/splatam.py
@@ -339,35 +325,7 @@ python scripts/eval_novel_view.py configs/replica_v2/eval_novel_view.py
 
 For other scenes, please modify the config files.
 
-## Acknowledgement
 
-We thank the authors of the following repositories for their open-source code:
+# ✏️ Acknowledgement
+Our implementation is heavily based on <a href="https://vladimiryugay.github.io/gaussian_slam/index.html">Gaussian-SLAM</a> and <a href="https://github.com/muskie82/MonoGS">MonoGS</a> and <a href="https://github.com/GradientSpaces/LoopSplat">Loop-Splat</a>, <a href="https://github.com/spla-tam/SplaTAM">SplaTAM</a>. We thank the authors for their open-source contributions. If you use the code that is based on their contribution, please cite them as well. We thank [Yue Pan](https://github.com/YuePanEdward) for the fruitful discussion.<br>
 
-- 3D Gaussians
-  - [Dynamic 3D Gaussians](https://github.com/JonathonLuiten/Dynamic3DGaussians)
-  - [3D Gaussian Splating](https://github.com/graphdeco-inria/gaussian-splatting)
-- Dataloaders
-  - [GradSLAM & ConceptFusion](https://github.com/gradslam/gradslam/tree/conceptfusion)
-- Baselines
-  - [Nice-SLAM](https://github.com/cvg/nice-slam)
-  - [Point-SLAM](https://github.com/eriksandstroem/Point-SLAM)
-
-## Citation
-
-If you find our paper and code useful, please cite us:
-
-```bib
-@article{keetha2023splatam,
-    author    = {Keetha, Nikhil and Karhade, Jay and Jatavallabhula, Krishna Murthy and Yang, Gengshan and Scherer, Sebastian and Ramanan, Deva and Luiten, Jonathan}
-    title     = {SplaTAM: Splat, Track & Map 3D Gaussians for Dense RGB-D SLAM},
-    journal   = {arXiv},
-    year      = {2023},
-}
-```
-
-## Developers
-- [Nik-V9](https://github.com/Nik-V9) ([Nikhil Keetha](https://nik-v9.github.io/))
-- [JayKarhade](https://github.com/JayKarhade) ([Jay Karhade](https://jaykarhade.github.io/))
-- [JonathonLuiten](https://github.com/JonathonLuiten) ([Jonathan Luiten](https://www.vision.rwth-aachen.de/person/216/))
-- [krrish94](https://github.com/krrish94) ([Krishna Murthy Jatavallabhula](https://krrish94.github.io/))
-- [gengshan-y](https://github.com/gengshan-y) ([Gengshan Yang](https://gengshan-y.github.io/))
