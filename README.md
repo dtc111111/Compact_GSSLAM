@@ -134,10 +134,5 @@ Here we elaborate on how to load the necessary data, configure Gaussian-SLAM for
 
 
 # ✏️ Acknowledgement
-Our implementation is heavily based on <a href="https://vladimiryugay.github.io/gaussian_slam/index.html">Gaussian-SLAM</a> and <a href="https://github.com/muskie82/MonoGS">MonoGS</a> and <a href="https://vladimiryugay.github.io/gaussian_slam/index.html">Loop-Splat</a>. We thank the authors for their open-source contributions. If you use the code that is based on their contribution, please cite them as well. We thank [Jianhao Zheng](https://jianhao-zheng.github.io/) for the help with datasets and [Yue Pan](https://github.com/YuePanEdward) for the fruitful discussion.<br>
+Our implementation is heavily based on <a href="https://vladimiryugay.github.io/gaussian_slam/index.html">Gaussian-SLAM</a> and <a href="https://github.com/muskie82/MonoGS">MonoGS</a> and <a href="https://github.com/GradientSpaces/LoopSplat">Loop-Splat</a>. We thank the authors for their open-source contributions. If you use the code that is based on their contribution, please cite them as well. We thank [Yue Pan](https://github.com/YuePanEdward) for the fruitful discussion.<br>
 
-```bash
-conda env create -f environment.yml
-conda activate VGSSLAM
-``` -->
-``` -->
