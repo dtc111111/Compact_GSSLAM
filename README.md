@@ -42,7 +42,14 @@ SLAM on Embedded Vision System</h1>
     </li>
   </ol>
 </details>
-## Installation
+
+# Notes
+
+Our method is a plug-and-play approach that can be integrated with different GS-SLAM frameworks. We will maintain separate branches for different versions of the method. The current version supports MonoGS and Gaussian-SLAM.
+
+- [x] We have updated the `README.md` and are preparing to open-source our code！  
+- [x] Code for main parts, including `optimizer`, `renderer`, `tracking and mapping modules`, `Voxelized Scene Representation`
+- [x] Installation setup
 
 # 🛠️ Setup
 The code has been tested on:
@@ -67,7 +74,7 @@ export CC=<gcc path>
 export CXX=<g++ path>
 ```
 
-To find the <i>gcc path</i> and <i>g++ path</i> on your machine you can use <i>which gcc</i>.
+To find the <i>gcc path</i> and <i>g++ path</i> on your machine, you can use <i>which gcc</i>.
 
 
 Then setup environment from the provided conda environment file,
