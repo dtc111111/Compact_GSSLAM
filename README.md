@@ -44,18 +44,99 @@ SLAM on Embedded Vision System</h1>
 </details>
 ## Installation
 
-##### (Recommended)
-Our method has been tested on python 3.10, CUDA>=11.6. The simplest way to install all dependences is to use [anaconda](https://www.anaconda.com/) and [pip](https://pypi.org/project/pip/) in the following steps: 
+# 🛠️ Setup
+The code has been tested on:
 
-```bash
-conda create -n VGSSLAM python=3.10
-conda activate VGSSLAM
-conda install -c "nvidia/label/cuda-11.6.0" cuda-toolkit
-conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.6 -c pytorch -c conda-forge
+- Ubuntu 22.04 LTS, Python 3.10.14, CUDA 12.2, GeForce RTX 4090/RTX 3090
+- CentOS Linux 7, Python 3.12.1, CUDA 12.4, A100/A6000
+
+## 📦 Repository
+
+Clone the repo with `--recursive` because we have submodules:
+
+```
+git clone --recursive git@github.com:GradientSpaces/LoopSplat.git
+cd LoopSplat
+```
+
+## 💻 Installation
+Make sure that gcc and g++ paths on your system are exported:
+
+```
+export CC=<gcc path>
+export CXX=<g++ path>
+```
+
+To find the <i>gcc path</i> and <i>g++ path</i> on your machine you can use <i>which gcc</i>.
+
+
+Then setup environment from the provided conda environment file,
+
+```
+conda create -n loop_splat -c nvidia/label/cuda-12.1.0 cuda=12.1 cuda-toolkit=12.1 cuda-nvcc=12.1
+conda env update --file environment.yml --prune
+conda activate loop_splat
 pip install -r requirements.txt
 ```
 
-<!-- Alternatively, we also provide a conda environment.yml file :
+You will also need to install <i>hloc</i> for loop detection and 3DGS registration.
+```
+cd thirdparty/Hierarchical-Localization
+python -m pip install -e .
+cd ../..
+```
+
+We tested our code on RTX4090 and RTX A6000 GPUs respectively and Ubuntu22 and CentOS7.5.
+
+## 🚀 Usage
+
+Here we elaborate on how to load the necessary data, configure Gaussian-SLAM for your use-case, debug it, and how to reproduce the results mentioned in the paper.
+
+  <!-- <details>
+  <summary><b>Downloading the Data</b></summary> -->
+  ### Downloading the Datasets
+  We tested our code on Replica, TUM_RGBD, ScanNet, and ScanNet++ datasets. We also provide scripts for downloading Replica and TUM_RGBD in `scripts` folder. Install git lfs before using the scripts by running ```git lfs install```.
+
+  For reconstruction evaluation on <b>Replica</b>, we follow [Co-SLAM](https://github.com/JingwenWang95/neural_slam_eval?tab=readme-ov-file#datasets) mesh culling protocal, please use their code to process the mesh first.
+
+  For downloading ScanNet, follow the procedure described on <a href="http://www.scan-net.org/">here</a>.<br>
+  <b>Pay attention! </b> There are some frames in ScanNet with `inf` poses, we filter them out using the jupyter notebook `scripts/scannet_preprocess.ipynb`. Please change the path to your ScanNet data and run the cells.
+
+  For downloading ScanNet++, follow the procedure described on <a href="https://kaldir.vc.in.tum.de/scannetpp/">here</a>.<br>
+  
+  The config files are named after the sequences that we used for our method.
+  <!-- </details> -->
+
+  ### Running the code
+  Start the system with the command:
+
+  ```
+  python run_slam.py configs/<dataset_name>/<config_name> --input_path <path_to_the_scene> --output_path <output_path>
+  ```
+  
+  You can also configure input and output paths in the config yaml file.
+  
+
+  ### Reproducing Results
+
+  You can reproduce the results for a single scene by running:
+
+  ```
+  python run_slam.py configs/<dataset_name>/<config_name> --input_path <path_to_the_scene> --output_path <output_path>
+  ```
+
+  If you are running on a SLURM cluster, you can reproduce the results for all scenes in a dataset by running the script:
+  ```
+  ./scripts/reproduce_sbatch.sh
+  ``` 
+  Please note the evaluation of ```depth_L1``` metric requires reconstruction of the mesh, which in turns requires headless installation of open3d if you are running on a cluster.
+  
+  ## 📧 Contact
+  If you have any questions regarding this project, please contact Liyuan Zhu (liyzhu@stanford.edu). If you want to use our intermediate results for qualitative comparisons, please reach out to the same email.
+
+# ✏️ Acknowledgement
+Our implementation is heavily based on <a href="https://vladimiryugay.github.io/gaussian_slam/index.html">Gaussian-SLAM</a> and <a href="https://github.com/muskie82/MonoGS">MonoGS</a>. We thank the authors for their open-source contributions. If you use the code that is based on their contribution, please cite them as well. We thank [Jianhao Zheng](https://jianhao-zheng.github.io/) for the help with datasets and [Yue Pan](https://github.com/YuePanEdward) for the fruitful discussion.<br>
+
 ```bash
 conda env create -f environment.yml
 conda activate VGSSLAM
