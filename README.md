@@ -139,33 +139,33 @@ We will use the iPhone dataset as an example to show how to use VCGS-SLAM. The f
 To run VCGS-SLAM, please use the following command:
 
 ```bash
-python scripts/splatam.py configs/iphone/splatam.py
+python scripts/vsgsslam.py configs/iphone/vsgsslam.py
 ```
 
-To visualize the final interactive SplaTAM reconstruction, please use the following command:
+To visualize the final interactive VCGS-SLAM reconstruction, please use the following command:
 
 ```bash
-python viz_scripts/final_recon.py configs/iphone/splatam.py
+python viz_scripts/final_recon.py configs/iphone/vsgsslam.py
 ```
 
-To visualize the SplaTAM reconstruction in an online fashion, please use the following command:
+To visualize the VCGS-SLAM reconstruction in an online fashion, please use the following command:
 
 ```bash
-python viz_scripts/online_recon.py configs/iphone/splatam.py
+python viz_scripts/online_recon.py configs/iphone/vsgsslam.py
 ```
 
 To export the splats to a .ply file, please use the following command:
 
 ```bash
-python scripts/export_ply.py configs/iphone/splatam.py
+python scripts/export_ply.py configs/iphone/vsgsslam.py
 ```
 
 `PLY` format Splats can be visualized in viewers such as [SuperSplat](https://playcanvas.com/supersplat/editor) & [PolyCam](https://poly.cam/tools/gaussian-splatting).
 
-To run 3D Gaussian Splatting on the SplaTAM reconstruction, please use the following command:
+To run 3D Gaussian Splatting on the VCGS-SLAM reconstruction, please use the following command:
 
 ```bash
-python scripts/post_splatam_opt.py configs/iphone/post_splatam_opt.py
+python scripts/post_vsgsslam_opt.py configs/iphone/post_vsgsslam_opt.py
 ```
 
 To run 3D Gaussian Splatting on a dataset using ground truth poses, please use the following command:
@@ -253,7 +253,7 @@ We use the Replica-V2 dataset from vMAP to evaluate novel view synthesis. Please
 
 ## Benchmarking
 
-For running SplaTAM, we recommend using [weights and biases](https://wandb.ai/) for the logging. This can be turned on by setting the `wandb` flag to True in the configs file. Also make sure to specify the path `wandb_folder`. If you don't have a wandb account, first create one. Please make sure to change the `entity` config to your wandb account. Each scene has a config folder, where the `input_folder` and `output` paths need to be specified. 
+For running VCGS-SLAM, we recommend using [weights and biases](https://wandb.ai/) for the logging. This can be turned on by setting the `wandb` flag to True in the configs file. Also make sure to specify the path `wandb_folder`. If you don't have a wandb account, first create one. Please make sure to change the `entity` config to your wandb account. Each scene has a config folder, where the `input_folder` and `output` paths need to be specified. 
 
 Below, we show some example run commands for one scene from each dataset. After SLAM, the trajectory error will be evaluated along with the rendering metrics. The results will be saved to `./experiments` by default.
 
@@ -262,43 +262,43 @@ Below, we show some example run commands for one scene from each dataset. After 
 To run VCGS-SLAM on the `room0` scene, run the following command:
 
 ```bash
-python scripts/splatam.py configs/replica/splatam.py
+python scripts/vsgsslam.py configs/replica/vsgsslam.py
 ```
 
 To run SplaTAM-S on the `room0` scene, run the following command:
 
 ```bash
-python scripts/splatam.py configs/replica/splatam_s.py
+python scripts/vsgsslam.py configs/replica/vsgsslam_s.py
 ```
 
-For other scenes, please modify the `configs/replica/splatam.py` file or use `configs/replica/replica.bash`.
+For other scenes, please modify the `configs/replica/vsgsslam.py` file or use `configs/replica/replica.bash`.
 
 ### TUM-RGBD
 
 To run VCGS-SLAM on the `freiburg1_desk` scene, run the following command:
 
 ```bash
-python scripts/splatam.py configs/tum/splatam.py
+python scripts/vsgsslam.py configs/tum/vsgsslam.py
 ```
 
-For other scenes, please modify the `configs/tum/splatam.py` file or use `configs/tum/tum.bash`.
+For other scenes, please modify the `configs/tum/vsgsslam.py` file or use `configs/tum/tum.bash`.
 
 ### ScanNet
 
 To run VCGS-SLAM on the `scene0000_00` scene, run the following command:
 
 ```bash
-python scripts/splatam.py configs/scannet/splatam.py
+python scripts/vsgsslam.py configs/scannet/vsgsslam.py
 ```
 
-For other scenes, please modify the `configs/scannet/splatam.py` file or use `configs/scannet/scannet.bash`.
+For other scenes, please modify the `configs/scannet/vsgsslam.py` file or use `configs/scannet/scannet.bash`.
 
 ### ScanNet++
 
 To run VCGS-SLAM on the `8b5caf3398` scene, run the following command:
 
 ```bash
-python scripts/splatam.py configs/scannetpp/splatam.py
+python scripts/vsgsslam.py configs/scannetpp/vsgsslam.py
 ```
 
 To run Novel View Synthesis on the `8b5caf3398` scene, run the following command:
@@ -307,17 +307,17 @@ To run Novel View Synthesis on the `8b5caf3398` scene, run the following command
 python scripts/eval_novel_view.py configs/scannetpp/eval_novel_view.py
 ```
 
-For other scenes, please modify the `configs/scannetpp/splatam.py` file or use `configs/scannetpp/scannetpp.bash`.
+For other scenes, please modify the `configs/scannetpp/vsgsslam.py` file or use `configs/scannetpp/scannetpp.bash`.
 
 ### ReplicaV2
 
 To run VCGS-SLAM on the `room0` scene, run the following command:
 
 ```bash
-python scripts/splatam.py configs/replica_v2/splatam.py
+python scripts/vsgsslam.py configs/replica_v2/vsgsslam.py
 ```
 
-To run Novel View Synthesis on the `room0` scene post SplaTAM, run the following command:
+To run Novel View Synthesis on the `room0` scene post VCGS-SLAM, run the following command:
 
 ```bash
 python scripts/eval_novel_view.py configs/replica_v2/eval_novel_view.py
