@@ -55,8 +55,8 @@ The code has been tested on:
 Clone the repo with `--recursive` because we have submodules:
 
 ```
-git clone --recursive git@github.com:GradientSpaces/LoopSplat.git
-cd LoopSplat
+git clone --recursive git@github.com:dtc111111/Compact_GSSLAM.git
+cd VCGS-SLAM
 ```
 
 ## 💻 Installation
@@ -73,9 +73,9 @@ To find the <i>gcc path</i> and <i>g++ path</i> on your machine you can use <i>w
 Then setup environment from the provided conda environment file,
 
 ```
-conda create -n loop_splat -c nvidia/label/cuda-12.1.0 cuda=12.1 cuda-toolkit=12.1 cuda-nvcc=12.1
+conda create -n vcgs-slam -c nvidia/label/cuda-12.1.0 cuda=12.1 cuda-toolkit=12.1 cuda-nvcc=12.1
 conda env update --file environment.yml --prune
-conda activate loop_splat
+conda activate vcgs-slam
 pip install -r requirements.txt
 ```
 
@@ -131,11 +131,10 @@ Here we elaborate on how to load the necessary data, configure Gaussian-SLAM for
   ``` 
   Please note the evaluation of ```depth_L1``` metric requires reconstruction of the mesh, which in turns requires headless installation of open3d if you are running on a cluster.
   
-  ## 📧 Contact
-  If you have any questions regarding this project, please contact Liyuan Zhu (liyzhu@stanford.edu). If you want to use our intermediate results for qualitative comparisons, please reach out to the same email.
+
 
 # ✏️ Acknowledgement
-Our implementation is heavily based on <a href="https://vladimiryugay.github.io/gaussian_slam/index.html">Gaussian-SLAM</a> and <a href="https://github.com/muskie82/MonoGS">MonoGS</a>. We thank the authors for their open-source contributions. If you use the code that is based on their contribution, please cite them as well. We thank [Jianhao Zheng](https://jianhao-zheng.github.io/) for the help with datasets and [Yue Pan](https://github.com/YuePanEdward) for the fruitful discussion.<br>
+Our implementation is heavily based on <a href="https://vladimiryugay.github.io/gaussian_slam/index.html">Gaussian-SLAM</a> and <a href="https://github.com/muskie82/MonoGS">MonoGS</a> and <a href="https://vladimiryugay.github.io/gaussian_slam/index.html">Loop-Splat</a>. We thank the authors for their open-source contributions. If you use the code that is based on their contribution, please cite them as well. We thank [Jianhao Zheng](https://jianhao-zheng.github.io/) for the help with datasets and [Yue Pan](https://github.com/YuePanEdward) for the fruitful discussion.<br>
 
 ```bash
 conda env create -f environment.yml
