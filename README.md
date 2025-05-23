@@ -43,6 +43,7 @@ SLAM on Embedded Vision System</h1>
   </ol>
 </details>
 ## Notes
+
 Our method is a plug-and-play approach that can be integrated with different GS-SLAM frameworks. We will maintain separate branches for different versions of the method. The current version supports MonoGS and Gaussian-SLAM.
 # 🛠️ Setup
 The code has been tested on:
