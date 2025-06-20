@@ -1,4 +1,4 @@
-name: loop_splat
+name: vcgsslam
 channels:
   - pytorch
   - nvidia
