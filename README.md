@@ -4,7 +4,7 @@
 
   <h1 align="center">Voxelized 3D Gaussian Rrepresentation for Dense Visual
 SLAM on Embedded Vision System</h1>
-  <h3 align="center">IJCV Submission</h3>
+  <h3 align="center">IJCV 2025</h3>
   <div align="center"></div>
 </p>
 
